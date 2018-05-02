@@ -1,0 +1,25 @@
+{
+  "name": "magic-mirror",
+  "version": "1.0.0",
+  "description": "The API facade to the complex internal sturcture that provides a simple overview of the public entities.   Written in Nodejs and Express. To be used with the Landing part of the site.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Volunteero/magic-mirror.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Volunteero/magic-mirror/issues"
+  },
+  "homepage": "https://github.com/Volunteero/magic-mirror#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3"
+  }
+}
