@@ -8,7 +8,7 @@ const Router = require('./routes/Router');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 /* App startup */
@@ -24,10 +24,10 @@ const server = app.listen(process.env.PORT || 5000, () => {
   const router = new Router();
   const routes = router.config(app);
 
-  console.info('Configured routes:')
-  routes.forEach(route => {
+  console.info('Configured routes:');
+  routes.forEach((route) => {
     console.info(route);
-  })
+  });
 });
 
 
@@ -39,7 +39,7 @@ const shutDown = () => {
     process.exit(0);
   });
   setTimeout(() => {
-    console.error('Could not close connections in time, forcefully shutting down');
+    console.error('Could not close in time, forcefully shutting down');
     process.exit(1);
   }, 500);
 };
