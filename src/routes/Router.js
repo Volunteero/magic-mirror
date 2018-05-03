@@ -2,8 +2,6 @@
 
 const DiscoverHandler = require('../handlers/DiscoverHandler');
 
-
-
 module.exports = class Router {
   /**
    * Configures the routes for the application 
@@ -56,18 +54,18 @@ module.exports = class Router {
 
     const discoverPath = '/discover/';
     const discoverHandler = new DiscoverHandler();
-    app.get(discoverPath, (req, res) => {
+    app.put(discoverPath, (req, res) => {
       try {
 
         discoverHandler.handle(req, res);
       } catch (error) {
 
-        discoverHandler.resolveError(res, error, 400, {});
+        discoverHandler.handleError(res, error, 400, {});
       }
     })
 
     routes.push({
-      path: `get: ${discoverPath}`,
+      path: `put: ${discoverPath}`,
     })
 
 
