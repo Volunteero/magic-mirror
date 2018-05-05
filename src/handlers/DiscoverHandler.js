@@ -45,13 +45,15 @@ module.exports = class DiscoverHandler {
 
     console.log(resolvers);
 
-    const results = resolvers.map((resolver) => resolver.resolve());
-
-    res.json({
-      message: 'done',
-      entities: entities,
-      results,
-    });
+    const resolutions = resolvers.map((resolver) => resolver.resolve());
+    Promise.all(resolutions)
+      .then((results) => {
+        res.json({
+          message: 'done',
+          entities: entities,
+          results,
+        });
+      });
   }
 
   /**

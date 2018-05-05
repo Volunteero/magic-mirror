@@ -59,11 +59,14 @@ module.exports = class EventsResolver extends IResolverBase {
 
   /**
    * Returns an emtpy array of elements
-   * @return {Array}
+   * @return {Promise<Array>}
    */
   resolve() {
-    return this.DATA.sort(() => {
-      return 0.5 - Math.random();
+    return new Promise((resolve, reject) => {
+      const data = this.DATA.sort(() => {
+        return 0.5 - Math.random();
+      });
+      resolve(data);
     });
   }
 };

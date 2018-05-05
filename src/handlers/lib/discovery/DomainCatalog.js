@@ -1,6 +1,6 @@
 'use strict';
 
-const EventsResoler = require('./resolvers/EventsResolver');
+const EventsResolver = require('./resolvers/EventsResolver');
 
 class DomainCatalog {
   constructor(defaultResolver) {
@@ -26,7 +26,7 @@ module.exports = {
 
   setup() {
     const domainCatalog = new DomainCatalog();
-    domainCatalog.register(new EventsResoler());
+    domainCatalog.register(new EventsResolver());
     return domainCatalog;
   },
 

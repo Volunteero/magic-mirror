@@ -4,16 +4,15 @@ const DiscoverHandler = require('../handlers/DiscoverHandler');
 
 module.exports = class Router {
   /**
-   * Configures the routes for the application 
-   * The express app reference is passed as the first argument 
+   * Configures the routes for the application
+   * The express app reference is passed as the first argument
    * The handlerRegistry is a module with according handler references
-   * 
-   * @param {*} app 
-   * @param {*} handlerRegistry 
-   * @returns {Array}
+   *
+   * @param {*} app
+   * @param {*} handlerRegistry
+   * @return {Array}
    */
   config(app, handlerRegistry) {
-
     const routes = [];
 
     // Index
@@ -21,28 +20,28 @@ module.exports = class Router {
     const indexPath = '/';
     app.get(indexPath, (req, res) => {
       const result = {
-        message: 'oh, hi there'
+        message: 'oh, hi there',
       };
       res.json(result);
-    })
+    });
 
     routes.push({
       path: `get: ${indexPath}`,
-    })
+    });
 
     // Heartbeat
 
     const heartbeatPath = '/heartbeat/';
     app.get(heartbeatPath, (req, res) => {
       const result = {
-        message: 'tum-tum'
+        message: 'tum-tum',
       };
       res.json(result);
-    })
+    });
 
     routes.push({
       path: `get: ${heartbeatPath}`,
-    })
+    });
 
 
     /**
@@ -56,19 +55,17 @@ module.exports = class Router {
     const discoverHandler = new DiscoverHandler();
     app.put(discoverPath, (req, res) => {
       try {
-
         discoverHandler.handle(req, res);
       } catch (error) {
-
         discoverHandler.handleError(res, error, 400, {});
       }
-    })
+    });
 
     routes.push({
       path: `put: ${discoverPath}`,
-    })
+    });
 
 
     return routes;
   }
-}
+};
