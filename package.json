@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "The API facade to the complex internal sturcture that provides a simple overview of the public entities.   Written in Nodejs and Express. To be used with the Landing part of the site.",
   "main": "src/app.js",
+  "engines": {
+    "node": "8.11.1"
+  },
   "scripts": {
     "start": "npx nodemon src/app.js --config nodemon.json",
     "test": "echo \"Error: no test specified\" && exit 1"
