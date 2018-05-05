@@ -48,10 +48,13 @@ module.exports = class DiscoverHandler {
     const resolutions = resolvers.map((resolver) => resolver.resolve());
     Promise.all(resolutions)
       .then((results) => {
+        const reduced = results.reduce((accum, val) => {
+          return accum.concat(val);
+        }, []);
         res.json({
           message: 'done',
           entities: entities,
-          results,
+          results: reduced,
         });
       });
   }
