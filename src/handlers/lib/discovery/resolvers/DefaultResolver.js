@@ -26,6 +26,9 @@ module.exports = class DefaultResolver extends IResolverBase {
    * @return {Array}
    */
   resolve() {
-    return this.DATA;
+    console.log('Resolving default');
+    return new Promise((resolve, reject) => {
+      resolve(this.DATA);
+    });
   }
 };
