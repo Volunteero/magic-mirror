@@ -1,12 +1,11 @@
 'use strict';
 
+const DefaultResolver = require('./resolvers/DefaultResolver');
 const EventsResolver = require('./resolvers/EventsResolver');
 
-class DomainCatalog {
-  constructor(defaultResolver) {
-    this.catalog = {
-      'default': defaultResolver,
-    };
+module.exports = class DomainCatalog {
+  constructor() {
+    this.catalog = {};
   }
 
   register(resolver) {
@@ -14,23 +13,21 @@ class DomainCatalog {
   }
 
   matchResolvers(entities) {
+    console.log(entities);
+    console.log(this.catalog);
     return entities.map((ent) => {
       return this.catalog[ent] || this.catalog['default'];
     });
   }
-};
-
-
-module.exports = {
-  DomainCatalog,
 
   setup() {
     const domainCatalog = new DomainCatalog();
+    domainCatalog.register(new DefaultResolver());
     domainCatalog.register(new EventsResolver());
     return domainCatalog;
-  },
+  }
 
-  getCatalog() {
-    return this.setup();
-  },
+  static getCatalog() {
+    return (new DomainCatalog()).setup();
+  }
 };
